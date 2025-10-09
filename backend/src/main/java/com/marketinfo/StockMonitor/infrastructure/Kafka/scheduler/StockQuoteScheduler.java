@@ -3,7 +3,7 @@ package com.marketinfo.StockMonitor.infrastructure.Kafka.scheduler;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.marketinfo.StockMonitor.infrastructure.service.FinnhubService;
+import com.marketinfo.StockMonitor.infrastructure.finnhub.FinnhubService;
 
 import java.util.Arrays;
 import java.util.List;

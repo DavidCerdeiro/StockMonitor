@@ -1,10 +1,10 @@
-package com.marketinfo.StockMonitor.infrastructure.service;
+package com.marketinfo.StockMonitor.infrastructure.finnhub;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.marketinfo.StockQuote.dto.StockQuote;
+import com.marketinfo.StockMonitor.StockPrice.dto.StockQuote;
 
 import java.util.Optional;
 

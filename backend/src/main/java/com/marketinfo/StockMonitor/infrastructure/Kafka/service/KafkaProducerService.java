@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import com.marketinfo.StockQuote.dto.StockQuote;
+import com.marketinfo.StockMonitor.StockPrice.dto.StockQuote;
 
 @Service
 public class KafkaProducerService {
