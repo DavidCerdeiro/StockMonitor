@@ -1,0 +1,38 @@
+{
+    "header":{
+        "title": "StockMonitor",
+        "dashboard": "Dashboard",
+        "contact": "Contacto"
+    },
+    "hero":{
+        "title": "Sigue la evolución de las acciones más importantes",
+        "subtitle": "Monitoriza la evolución de tus acciones favoritas con datos que se actualizan en vivo. Sin demoras, sin recargar.",
+        "explanation": "Por limitaciones del servidor, la primera petición puede tardar 30/60 segundos. Gracias por tu paciencia.",
+        "view": "Ver el Dashboard en Vivo"
+    },
+    "dashboard": {
+        "title": "Mercado en Directo",
+        "subtitle": "Los precios y porcentajes de cambio se actualizan automáticamente.",
+        "connected": "Conexión establecida.",
+        "disconnected": "Desconectado. Reconectando...",
+        "searchPlaceholder": "Buscar símbolo o empresa (ej: AAPL, Apple)",
+        "table":{
+            "waiting": "Cargando datos...",
+            "noResults": "No se encontraron resultados para \"{{term}}\"",
+            "columns": {
+                "symbol": "Símbolo",
+                "company": "Empresa",
+                "price": "Precio",
+                "change": "Cambio",
+                "percentChange": "% Cambio",
+                "lastUpdate": "Última Actualización"
+            },
+            "caption": "Datos proporcionados por Finnhub.io"
+        }
+    },
+    "footer":{
+        "author": "David Jesús Cerdeiro Gallardo.",
+        "rights": "Todos los derechos reservados.",
+        "contact": "Contacto"
+    }
+}

@@ -1,4 +1,4 @@
-package com.marketinfo.StockMonitor.StockPrice.dto;
+package com.marketinfo.StockMonitor.Stock.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -8,8 +8,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StockQuote {
-
-    // Mapea los campos JSON de la respuesta de Finnhub a los atributos de esta clase
     @JsonProperty("c")
     private double currentPrice;
 
@@ -22,8 +20,9 @@ public class StockQuote {
     @JsonProperty("t")
     private long timestamp;
     
-    // Símbolo de la acción (no viene en la respuesta, lo asignamos manualmente)
     private String symbol;
+
+    private String companyName;
 
     // Getters y Setters
     public BigDecimal getCurrentPrice() { return BigDecimal.valueOf(currentPrice); }
@@ -35,6 +34,8 @@ public class StockQuote {
     public String getSymbol() { return symbol; }
     public void setSymbol(String symbol) { this.symbol = symbol; }
     public LocalDateTime getLocalDateTime() { return LocalDateTime.ofEpochSecond(timestamp, 0, java.time.ZoneOffset.UTC); }
+    public void setCompanyName(String companyName) { this.companyName = companyName; }
+    public String getCompanyName() { return companyName; }
 
     // toString() para facilitar la impresión en consola
     @Override

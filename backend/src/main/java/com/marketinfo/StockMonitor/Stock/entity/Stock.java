@@ -1,4 +1,4 @@
-package com.marketinfo.StockMonitor.StockPrice.entity;
+package com.marketinfo.StockMonitor.Stock.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -16,8 +16,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "stock_price")
-public class StockPrice {
+@Table(name = "stock")
+public class Stock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
@@ -30,14 +30,14 @@ public class StockPrice {
     @Column(name = "Price", nullable = false)
     private BigDecimal  price;
 
-    @Column(name = "\"LastPrice\"", nullable = false)
+    @Column(name = "LastPrice", nullable = false)
     private BigDecimal  lastPrice;
 
     @Column(name = "PercentChange", nullable = false)
     private BigDecimal  percentChange;
 
-    @Column(name = "Date", nullable = false)
-    private LocalDateTime date;
+    @Column(name = "LastUpdated", nullable = false)
+    private LocalDateTime lastUpdated;
 
     // Getters and Setters
     public Integer getId() {
@@ -67,10 +67,10 @@ public class StockPrice {
     public void setPercentChange(BigDecimal percentChange) {
         this.percentChange = percentChange;
     }
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getLastUpdated() {
+        return lastUpdated;
     }
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setLastUpdated(LocalDateTime lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
 }

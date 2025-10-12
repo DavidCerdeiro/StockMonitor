@@ -1,9 +1,9 @@
-package com.marketinfo.StockMonitor.StockPrice.controller;
+package com.marketinfo.StockMonitor.Stock.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.marketinfo.StockMonitor.StockPrice.dto.StockQuote;
+import com.marketinfo.StockMonitor.Stock.dto.StockQuote;
 import com.marketinfo.StockMonitor.infrastructure.Kafka.service.KafkaProducerService;
 
 import org.springframework.http.ResponseEntity;

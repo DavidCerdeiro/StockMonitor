@@ -11,17 +11,17 @@ CREATE TABLE IF NOT EXISTS "symbol" (
     CONSTRAINT "RS_Symbol__Id_Company" FOREIGN KEY ("Id_Company") REFERENCES "company"("Id") ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS "stock_price" (
+CREATE TABLE IF NOT EXISTS "stock" (
   "Id" serial PRIMARY KEY,
   "Id_Symbol" int NOT NULL,
   "Price" decimal(10, 2) NOT NULL,
   "LastPrice" decimal(10, 2) NOT NULL,
   "PercentChange" decimal(5, 2) NOT NULL,
-  "Date" timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "LastUpdated" timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT "RS_StockPrice__Id_Symbol" FOREIGN KEY ("Id_Symbol") REFERENCES "symbol"("Id") ON DELETE CASCADE
 );
 
-CREATE INDEX IX_StockPrice__Id_Symbol ON "stock_price"("Id_Symbol");
+CREATE INDEX IX_Stock__Id_Symbol ON "stock"("Id_Symbol");
 
 INSERT INTO "company" ("Name") VALUES
 ('Apple Inc.'),

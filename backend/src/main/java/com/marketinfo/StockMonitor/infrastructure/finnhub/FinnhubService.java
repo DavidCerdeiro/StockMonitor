@@ -4,7 +4,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.marketinfo.StockMonitor.StockPrice.dto.StockQuote;
+import com.marketinfo.StockMonitor.Stock.dto.StockQuote;
+import com.marketinfo.StockMonitor.Symbol.entity.Symbol;
+import com.marketinfo.StockMonitor.Symbol.service.SymbolService;
 
 import java.util.Optional;
 
@@ -12,15 +14,17 @@ import java.util.Optional;
 public class FinnhubService {
 
     private final RestTemplate restTemplate;
+    private final SymbolService symbolService;
 
     @Value("${finnhub.api.key}")
     private String apiKey;
 
     @Value("${finnhub.api.url}")
     private String apiUrl;
-    
-    public FinnhubService(RestTemplate restTemplate) {
+
+    public FinnhubService(RestTemplate restTemplate, SymbolService symbolService) {
         this.restTemplate = restTemplate;
+        this.symbolService = symbolService; 
     }
 
     public Optional<StockQuote> getQuote(String symbol) throws Exception {
@@ -32,10 +36,14 @@ public class FinnhubService {
         
         StockQuote quote = restTemplate.getForObject(url, StockQuote.class);
             if (quote != null) {
+                Symbol symbolEntity = symbolService.getSymbolByName(symbol);
+                if (symbolEntity == null) {
+                    throw new Exception("Symbol not found in database: " + symbol);
+                }
                 quote.setSymbol(symbol);
-                return Optional.of(quote);
+                quote.setCompanyName(symbolEntity.getCompany().getName());
+                return Optional.of(quote);  
             }
-        
         return Optional.empty();
     }
 }
