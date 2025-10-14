@@ -22,9 +22,9 @@ public class StockUnitTest {
         stock.setPercentChange(BigDecimal.valueOf(5.5));
         stock.setSymbol(symbol);
 
-        Assertions.assertEquals(150.0, stock.getPrice());
-        Assertions.assertEquals(300.0, stock.getLastPrice());
-        Assertions.assertEquals(5.5, stock.getPercentChange());
+        Assertions.assertEquals(BigDecimal.valueOf(150.0), stock.getPrice());
+        Assertions.assertEquals(BigDecimal.valueOf(300.0), stock.getLastPrice());
+        Assertions.assertEquals(BigDecimal.valueOf(5.5), stock.getPercentChange());
         Assertions.assertEquals("AAPL", stock.getSymbol().getName());
     }
 }

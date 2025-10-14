@@ -6,7 +6,7 @@ const Footer = () => {
     const socialLinks = [
         { href: "mailto:davidcergall22@gmail.com", icon: <Mail />, label: "Email" },
         { href: "https://www.linkedin.com/in/david-jes%C3%BAs-cerdeiro-gallardo-0b1123284/", icon: <Linkedin />, label: "LinkedIn" },
-        { href: "https://github.com/DavidCerdeiro", icon: <Github />, label: "GitHub" },
+        { href: "https://github.com/DavidCerdeiro/StockMonitor", icon: <Github />, label: "GitHub" },
     ];
     return (
         <>
