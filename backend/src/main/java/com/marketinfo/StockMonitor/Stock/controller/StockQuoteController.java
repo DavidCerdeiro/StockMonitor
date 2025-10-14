@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.marketinfo.StockMonitor.Stock.dto.StockQuote;
-import com.marketinfo.StockMonitor.infrastructure.Kafka.service.KafkaProducerService;
+import com.marketinfo.StockMonitor.infrastructure.RabbitMQ.service.RabbitMQProducerService;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/api/stock-quotes")
 public class StockQuoteController {
     
-    private final KafkaProducerService kafkaProducerService;
+    private final RabbitMQProducerService rabbitMQProducerService;
 
-    public StockQuoteController(KafkaProducerService kafkaProducerService) {
-        this.kafkaProducerService = kafkaProducerService;
+    public StockQuoteController(RabbitMQProducerService rabbitMQProducerService) {
+        this.rabbitMQProducerService = rabbitMQProducerService;
     }
 
     @PostMapping
     public ResponseEntity<String> sendStockQuote(@RequestBody StockQuote entity) {
-        kafkaProducerService.sendMessage(entity);
+        rabbitMQProducerService.sendMessage(entity);
 
-        return ResponseEntity.ok("Stock quote sent to Kafka topic successfully");
+        return ResponseEntity.ok("Stock quote sent to RabbitMQ topic successfully");
     }
     
 }

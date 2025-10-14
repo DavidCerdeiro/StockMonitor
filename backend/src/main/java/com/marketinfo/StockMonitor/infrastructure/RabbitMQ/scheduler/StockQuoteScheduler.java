@@ -1,10 +1,9 @@
-package com.marketinfo.StockMonitor.infrastructure.Kafka.scheduler;
+package com.marketinfo.StockMonitor.infrastructure.RabbitMQ.scheduler;
 
-import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.marketinfo.StockMonitor.Stock.dto.StockQuote;
 import com.marketinfo.StockMonitor.infrastructure.finnhub.FinnhubService;
 
 import java.util.Arrays;
@@ -15,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class StockQuoteScheduler {
 
     private final FinnhubService finnhubService;
-    private final KafkaTemplate<String, StockQuote> kafkaTemplate;
+    private final RabbitTemplate rabbitTemplate;
 
     private final List<String> symbols = Arrays.asList(
             "AAPL", "GOOGL", "MSFT", "AMZN", "NVDA",
@@ -24,10 +23,9 @@ public class StockQuoteScheduler {
     
     private final AtomicInteger symbolIndex = new AtomicInteger(0);
 
-    // 2. Inyecta el KafkaTemplate a través del constructor
-    public StockQuoteScheduler(FinnhubService finnhubService, KafkaTemplate<String, StockQuote> kafkaTemplate) {
+    public StockQuoteScheduler(FinnhubService finnhubService, RabbitTemplate rabbitTemplate) {
         this.finnhubService = finnhubService;
-        this.kafkaTemplate = kafkaTemplate;
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     @Scheduled(fixedRate = 1000)
@@ -38,10 +36,10 @@ public class StockQuoteScheduler {
         finnhubService.getQuote(currentSymbol).ifPresent(quote -> {
             
             System.out.println("SUCCESS: " + quote.toString());
-            
-            kafkaTemplate.send("stock-quotes", quote);
-            
-            System.out.println("✅ Sent quote to Kafka topic 'stock-quotes' for: " + quote.getSymbol());
+
+            rabbitTemplate.convertAndSend("stock-quotes", quote);
+
+            System.out.println("✅ Sent quote to RabbitMQ topic 'stock-quotes' for: " + quote.getSymbol());
 
         });
 

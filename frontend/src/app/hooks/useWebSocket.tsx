@@ -4,8 +4,8 @@ import type { StockQuote } from '../schemas/StockQuote';
 
 // Tipo para el mapa de cotizaciones que guardamos en el estado
 type QuotesMap = { [key: string]: StockQuote; };
-import.meta.env.VITE_TRUELAYER_REDIRECT_URI;
-const WEBSOCKET_URL = 'ws://localhost:8081/ws/tracker';
+
+const WEBSOCKET_URL = import.meta.env.VITE_WEBSOCKET_URL || 'ws://localhost:8081/ws/tracker';
 
 export const useWebSocket = (topic: string) => {
     const [quotes, setQuotes] = useState<QuotesMap>({});
