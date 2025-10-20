@@ -31,7 +31,8 @@ public class RabbitMQConsumerService {
     @RabbitListener(queues = "stock-quotes")
     public void consumeMessage(StockQuote message) {
         Symbol symbol = symbolService.getSymbolByName(message.getSymbol());
-        Stock stock = stockService.getStockBySymbol(message.getSymbol()) != null ? stockService.getStockBySymbol(message.getSymbol()) : new Stock();
+        Stock existing = stockService.getStockBySymbol(message.getSymbol());
+        Stock stock = existing != null ? existing : new Stock();
         stock.setSymbol(symbol);
         stock.setPrice(message.getCurrentPrice());
         stock.setLastPrice(message.getPreviousClosePrice());
