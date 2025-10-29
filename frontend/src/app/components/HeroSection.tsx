@@ -11,9 +11,6 @@ const HeroSection = () => {
                     <p className="hero-subtitle">
                     {t("hero.subtitle")}
                     </p>
-                    <p className="hero-text">
-                    {t("hero.explanation")} <br />
-                    </p>
                     <a href="#dashboard-section" className="cta-button">
                     <CheckCircle style={{ width: '1.25rem', height: '1.25rem' }} />
                     {t("hero.view")}

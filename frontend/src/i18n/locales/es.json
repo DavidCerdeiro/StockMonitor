@@ -7,7 +7,6 @@
     "hero":{
         "title": "Sigue la evolución de las acciones más importantes",
         "subtitle": "Monitoriza la evolución de tus acciones favoritas con datos que se actualizan en vivo. Sin demoras, sin recargar.",
-        "explanation": "Por limitaciones del servidor, la primera petición puede tardar 60 segundos o algo más. Gracias por tu paciencia.",
         "view": "Ver el Dashboard en Vivo"
     },
     "dashboard": {

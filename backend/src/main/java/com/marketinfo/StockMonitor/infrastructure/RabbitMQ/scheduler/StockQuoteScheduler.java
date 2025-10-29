@@ -28,7 +28,7 @@ public class StockQuoteScheduler {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    @Scheduled(fixedRate = 1000) // Cada 1 segundo
+    @Scheduled(fixedRate = 2000) // Cada 2 segundos
     public void fetchStockQuotes() throws Exception {
         String currentSymbol = symbols.get(symbolIndex.get());
 

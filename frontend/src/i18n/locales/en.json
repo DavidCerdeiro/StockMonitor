@@ -7,7 +7,6 @@
     "hero": {
         "title": "Track the evolution of the most important stocks",
         "subtitle": "Monitor the evolution of your favorite stocks with live-updating data. No delays, no refreshing.",
-        "explanation": "Due to server limitations, the first request may take 60 seconds or more. Thank you for your patience.",
         "view": "View Live Dashboard"
     },
     "dashboard": {
