@@ -50,7 +50,7 @@ POSTGRES_USER=user
 POSTGRES_PASSWORD=password
 POSTGRES_DB=stockmonitor_db
 ````
-#### 3. Build and Run
+### 3. Build and Run
 
 Open a terminal in the project's root directory and run:
 ```bash
@@ -67,7 +67,8 @@ Start all four containers and connect them.
 
 This process may take a few minutes the first time.
 
-4. Access the Application
+### 4. Access the Application
+
 Once all containers are running, you can access the services:
  - 🖥️ http://localhost:3000
 
