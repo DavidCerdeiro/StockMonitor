@@ -4,6 +4,9 @@
 It combines live market updates, reliable asynchronous messaging, and a scalable architecture to deliver actionable financial insights.
 
 ---
+## ✨ Live Demo
+![StockMonitor Live Demo](./.github/assets/preview.gif)
+
 
 ## 🚀 Purpose
 
