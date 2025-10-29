@@ -1,0 +1,7 @@
+# Ignora la carpeta de compilación de Maven
+target
+
+# Ignora archivos del IDE
+.idea
+.vscode
+*.iml

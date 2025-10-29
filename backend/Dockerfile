@@ -1,24 +1,25 @@
-# --- Etapa 1: Construcción del Proyecto ---
-FROM maven:3.9.6-eclipse-temurin-21 AS build
-
+# Stage 1: Build - Usando una imagen que tiene Maven y JDK 21
+# ---- ESTA LÍNEA ES LA QUE CAMBIA ----
+FROM maven:3.9-eclipse-temurin-21 AS builder
 WORKDIR /app
 
+# Copia primero el pom.xml para cachear las dependencias
 COPY pom.xml .
 RUN mvn dependency:go-offline
 
+# Copia el resto del código fuente y construye la aplicación
 COPY src ./src
+RUN mvn package -DskipTests
 
-RUN mvn clean package -DskipTests
-
-
-# --- Etapa 2: Ejecución de la Aplicación ---
-FROM eclipse-temurin:21-jdk-alpine
-
+# Stage 2: Run - Usando una imagen JRE ligera (Esto se queda igual)
+FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
 
-COPY --from=build /app/target/*.jar app.jar
+# Expone el puerto en el que corre Spring Boot
+EXPOSE 8080
 
-EXPOSE 8081
+# Copia el .jar construido del stage anterior
+COPY --from=builder /app/target/*.jar app.jar
 
-# SIN perfil prod, las variables de entorno se usan automáticamente
-ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT:-8081} -Dserver.address=0.0.0.0 -jar app.jar"]
+# Comando para ejecutar la aplicación
+ENTRYPOINT ["java", "-jar", "app.jar"]

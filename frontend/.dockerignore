@@ -1,0 +1,9 @@
+# Ignora la carpeta de dependencias, se instalarán dentro del contenedor
+node_modules
+
+# Ignora la carpeta de build (si existe)
+build
+
+# Ignora logs y archivos del entorno
+.env
+npm-debug.log
